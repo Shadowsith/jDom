@@ -45,6 +45,10 @@ class jDom {
         jDom.handle(selector, 'select', lambda);
     }
 
+    static submit(selector, lambda) {
+        jDom.handle(selector, 'submit', lambda);
+    }
+
     static post(param = {
         url: '',
         data: {},

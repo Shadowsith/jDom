@@ -9,18 +9,25 @@
             $.click('#btn', () => {
                 alert($.id('btn').value);
             });
-            $.post({
-                url: './back.php', 
-                data: {test: 'dolf', blub: 'moep'},
-                success: (response) => { },
-                error: (response) => { }
-            });
 
             $.get({
                 url: 'get.txt',
                 responseType: 'text',
                 success: (res) => { alert(res); },
                 error: (error) => { alert('error') }
+            });
+
+            $.submit('#formular', (e) => {
+                e.preventDefault()
+                $.post({
+                    url: './back.php', 
+                    data: {
+                        test: $.id('first').value,
+                        blub: $.id('last').value,
+                    },
+                    success: (response) => { alert(response)},
+                    error: (response) => { }
+                });
             });
 
         });
