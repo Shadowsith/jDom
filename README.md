@@ -20,6 +20,7 @@ Like jQuery you can use $ for the methods.
 |$.id(id)| HTMLElement| Returns a HTMLElement by Id| $.id('test')|
 |$.cl(cl)| HTMLCollectionOf<Element>| Returns HTMLElements by Class| $.cl('btn')|
 |$.tag(tag)| HTMLCollectionOf<any>| Returns elements by tag| $.tag('input')|
+|$.sel(selector)|any| dynamic selector, detects '#id', '.class' or 'tag' selector and returns one HTMLElement or a collection|
 
 ### Event Handler
 **Information**: Eventhandler selectors can be '#id', '.class' or 'tag' selectors
