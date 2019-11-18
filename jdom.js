@@ -1,8 +1,5 @@
 class jDom {
-    static ready(lambda = (e) => {}) {
-        document.addEventListener("DOMContentLoaded", lambda);
-    }
-
+    /* selector */
     static id(id) {
         return document.getElementById(id);
     }
@@ -15,6 +12,33 @@ class jDom {
         return document.getElementsByTagName(tag);
     }
 
+    static sel(selector) {
+        switch (selector[0]) {
+            case '#':
+                return jDom.id(selector.substr(1));
+
+            case '.':
+                return jDom.cl(selector.substr(1));
+
+            default:
+                return jDom.tag(selector);
+        }
+    }
+
+    static inner(selector, children) {
+        const elem = jDom.sel(selector);
+        if (children[0] == '.') {
+            return elem.getElementsByClassName(children.substr(1));
+        } else {
+            return elem.getElementsByTagName(children);
+        }
+    }
+
+    /* event handler */
+    static ready(lambda = (e) => {}) {
+        document.addEventListener("DOMContentLoaded", lambda);
+    }
+
     static on(selector = '', handler = '', lambda = () => {}) {
         document.addEventListener(handler, function(e) {
             if (e.target && e.target.id == 'selector') {
@@ -24,13 +48,7 @@ class jDom {
     }
 
     static handle(selector = '', handler = '', lambda = () => {}) {
-        if (selector[0] == '#') {
-            selector = selector.substr(1);
-            jDom.id(selector).addEventListener(handler, lambda);
-        } else if (selector[0] == '.') {
-            selector = selector.substr(1);
-            jDom.id(selector).addEventListener(handler, lambda);
-        }
+        jDom.sel(selector).addEventListener(handler, lambda);
     }
 
     static click(selector, lambda) {
@@ -49,6 +67,7 @@ class jDom {
         jDom.handle(selector, 'submit', lambda);
     }
 
+    /* ajax */
     static post(param = {
         url: '',
         data: {},
