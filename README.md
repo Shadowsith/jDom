@@ -35,6 +35,11 @@ Like jQuery you can use $ for the methods.
 |$.select(selector, lambda = () => {})| Select event handler|
 |$.submit(selector, lambda = () => {})| Submit event handler for forms|
 
+### Iterator
+|Name|Description|
+|----|-----------|
+|$.each(selector, lambda = (elem) => {})| Iterates over each element with specific query selector|
+
 ### AJAX
 **Information**: Ajax methods use the XMLHttpRequest class.
 

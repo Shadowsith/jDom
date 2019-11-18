@@ -67,6 +67,14 @@ class jDom {
         jDom.handle(selector, 'submit', lambda);
     }
 
+    /* iterator */
+    static each(selector, lambda = (elem) => {}) {
+        let elements = document.querySelectorAll(selector);
+        for (let elem of elements) {
+            lambda(elem);
+        }
+    }
+
     /* ajax */
     static post(param = {
         url: '',
@@ -122,4 +130,4 @@ class jDom {
         return list.join('&');
     }
 }
-const $ = jDom;
+var $ = jDom;
