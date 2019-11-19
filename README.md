@@ -1,8 +1,8 @@
-# jqDom
+# qjDom
 jquery like lightweight javascript lib
 ---
 
-jqDom is a small, static ECMA 6 JavaScript class that imitates some basic functions of jQuery.
+qjDom is a small, static ECMA 6 JavaScript class that imitates some basic functions of jQuery.
 
 ## Use cases
 On small html files like formulars or simple HTML Websites with less animations you doesn't want to use jQuery cause you only use a small amount of features of it. This JavaScript lib is written for this cases.
