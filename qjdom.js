@@ -41,7 +41,7 @@ class qjDom {
 
     static on(selector = '', handler = '', func = (e) => {}) {
         document.addEventListener(handler, function(e) {
-            if (e.target && e.target.id == 'selector') {
+            if (e.target && e.target.id == selector) {
                 func;
             }
         });

@@ -6,10 +6,15 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
 function _classCallCheck(instance, Constructor) { if (!_instanceof(instance, Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i];
+function _defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+        var descriptor = props[i];
         descriptor.enumerable = descriptor.enumerable || false;
-        descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true;
-        Object.defineProperty(target, descriptor.key, descriptor); } }
+        descriptor.configurable = true;
+        if ("value" in descriptor) descriptor.writable = true;
+        Object.defineProperty(target, descriptor.key, descriptor);
+    }
+}
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
@@ -77,7 +82,7 @@ var qjDom =
                 var handler = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
                 var func = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : function(e) {};
                 document.addEventListener(handler, function(e) {
-                    if (e.target && e.target.id == 'selector') {
+                    if (e.target && e.target.id == selector) {
                         func;
                     }
                 });
