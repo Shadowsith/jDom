@@ -3,34 +3,47 @@
 
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="./qjdom.min.js"></script>
+    <script src="./qjdom.comp.js"></script>
     <script>
-        $.ready((e) => {
-            $.click('#btn', () => {
-                alert($.id('btn').value);
+        $.ready(function(e) {
+            $.each('input', function(elem) {
+                console.log(elem);
             });
 
-            $.get({
-                url: 'get.txt',
-                responseType: 'text',
-                success: (res) => { alert(res); },
-                error: (error) => { alert('error') }
+            $.input('#first', function(e) {
+                console.log(this.value);
             });
 
-            $.submit('#formular', (e) => {
-                e.preventDefault()
+            $.submit('#formular', function(e) {
+                e.preventDefault();
                 $.post({
-                    url: './back.php', 
+                    url: 'back.php',
                     data: {
                         test: $.id('first').value,
-                        blub: $.id('last').value,
+                        blub: $.id('last').value
                     },
-                    success: (response) => { alert(response)},
-                    error: (response) => { }
+                    success: function(response) {
+                        alert(response);                        
+                    },
+                    error: function(error) {
+                        alert(error);
+                    }
                 });
             });
 
+            $.hover('h1', function(e) {
+                console.log('hover');
+            });
+
+            $.resize(function(e) {
+                console.log('resize');
+            });
+
+            $.dblclick('#dbbtn', function(e) {
+                alert('db click');
+            });
         });
+
     </script>
 </head>
 
@@ -55,6 +68,7 @@
             </div>
             <input id="btn" class="btn btn-primary" type="submit" value="Absenden">
         </form>
+        <button class="btn btn-danger" id="dbbtn">db click</button>
     </div>
 </body>
 

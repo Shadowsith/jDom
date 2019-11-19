@@ -35,43 +35,89 @@ class qjDom {
     }
 
     /* event handler */
-    static ready(lambda = (e) => {}) {
-        document.addEventListener("DOMContentLoaded", lambda);
+    static ready(func = (e) => {}) {
+        document.addEventListener("DOMContentLoaded", func, true);
     }
 
-    static on(selector = '', handler = '', lambda = () => {}) {
+    static on(selector = '', handler = '', func = (e) => {}) {
         document.addEventListener(handler, function(e) {
             if (e.target && e.target.id == 'selector') {
-                lambda;
+                func;
             }
         });
     }
 
-    static handle(selector = '', handler = '', lambda = () => {}) {
-        qjDom.sel(selector).addEventListener(handler, lambda);
+    static handle(selector = '', handler = '', func = (e) => {}) {
+        const sel = qjDom.sel(selector);
+        if (selector[0] !== '#') {
+            for (let i = 0; i < sel.length; i++) {
+                sel[i].addEventListener(handler, func, true);
+            }
+        } else {
+            qjDom.sel(selector).addEventListener(handler, func, true);
+        }
     }
 
-    static click(selector, lambda) {
-        qjDom.handle(selector, 'click', lambda);
+    static click(selector, func = (e) => {}) {
+        qjDom.handle(selector, 'click', func);
     }
 
-    static change(selector, lambda) {
-        qjDom.handle(selector, 'change', lambda);
+    static dblclick(selector, func = (e) => {}) {
+        qjDom.handle(selector, 'dblclick', func);
     }
 
-    static select(selector, lambda) {
-        qjDom.handle(selector, 'select', lambda);
+    static hover(selector, func = (e) => {}) {
+        qjDom.handle(selector, 'mouseover', func);
     }
 
-    static submit(selector, lambda) {
-        qjDom.handle(selector, 'submit', lambda);
+    static change(selector, func = (e) => {}) {
+        qjDom.handle(selector, 'change', func);
+    }
+
+    static select(selector, func = (e) => {}) {
+        qjDom.handle(selector, 'select', func);
+    }
+
+    static input(selector, func = (e) => {}) {
+        qjDom.handle(selector, 'input', func);
+    }
+
+    static resize(func = (e) => {}) {
+        window.onresize = func;
+    }
+
+    static submit(selector, func) {
+        qjDom.handle(selector, 'submit', func);
     }
 
     /* iterator */
-    static each(selector, lambda = (elem) => {}) {
+    static each(selector, func = (elem) => {}) {
         let elements = document.querySelectorAll(selector);
-        for (let elem of elements) {
-            lambda(elem);
+        for (let i = 0; i < elements.length; i++) {
+            func(elements[i]);
+        }
+    }
+
+    /* ui */
+    static hide(selector) {
+        let list = $.sel(selector);
+        if (selector[0] !== '#') {
+            for (let i = 0; i < list.length; i++) {
+                list[i].style.display = 'none';
+            }
+        } else {
+            list.style.display = 'none';
+        }
+    }
+
+    static show(selector, display = 'block') {
+        const list = $.sel(selector);
+        if (selector[0] !== '#') {
+            for (let i = 0; i < list.length; i++) {
+                list[i].style.display = display;
+            }
+        } else {
+            list.style.display = display;
         }
     }
 
