@@ -15,18 +15,18 @@ class qjDom {
     static sel(selector) {
         switch (selector[0]) {
             case '#':
-                return jDom.id(selector.substr(1));
+                return qjDom.id(selector.substr(1));
 
             case '.':
-                return jDom.cl(selector.substr(1));
+                return qjDom.cl(selector.substr(1));
 
             default:
-                return jDom.tag(selector);
+                return qjDom.tag(selector);
         }
     }
 
     static inner(selector, children) {
-        const elem = jDom.sel(selector);
+        const elem = qjDom.sel(selector);
         if (children[0] == '.') {
             return elem.getElementsByClassName(children.substr(1));
         } else {
@@ -48,23 +48,23 @@ class qjDom {
     }
 
     static handle(selector = '', handler = '', lambda = () => {}) {
-        jDom.sel(selector).addEventListener(handler, lambda);
+        qjDom.sel(selector).addEventListener(handler, lambda);
     }
 
     static click(selector, lambda) {
-        jDom.handle(selector, 'click', lambda);
+        qjDom.handle(selector, 'click', lambda);
     }
 
     static change(selector, lambda) {
-        jDom.handle(selector, 'change', lambda);
+        qjDom.handle(selector, 'change', lambda);
     }
 
     static select(selector, lambda) {
-        jDom.handle(selector, 'select', lambda);
+        qjDom.handle(selector, 'select', lambda);
     }
 
     static submit(selector, lambda) {
-        jDom.handle(selector, 'submit', lambda);
+        qjDom.handle(selector, 'submit', lambda);
     }
 
     /* iterator */
