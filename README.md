@@ -10,9 +10,11 @@ On small html files like formulars or simple HTML Websites with less animations 
 ## Requirements
 None
 
+## Browser Support
+With normal qjdom.min.js it should work on all modern browsers. If the compatiblity file qjdom.comp.min.js is included instead it should work on old pre ECMA 5 browsers (IE9 etc.) too.
+
 ## Documentation
 Like jQuery you can use $ for the methods.
-
 
 ### Selectors
 |Name|Return Value|Description|Example|
@@ -27,18 +29,28 @@ Like jQuery you can use $ for the methods.
 
 |Name|Description|
 |----|-----------|
-|$.ready(() => {})|Waits until the document is fully loaded|
+|$.ready(func = (e) => {})| Waits until the document is fully loaded|
+|$.resize(func = (e) => {}| Wrapper for window.onresize = function |
 |$.on(selector = '', handler = '', lambda = () => {})| For dynamic content like jQuery.on event|
 |$.handle(selector = '', handler = '', lambda = () => {})| Global handler which could be used for all diffrent JavaScript event handler types. All other event handler are syntastic sugar of $.handle|
-|$.click(selector, lambda = () => {})| Click event handler|
-|$.change(selector, lambda = () => {})| Change event handler|
-|$.select(selector, lambda = () => {})| Select event handler|
-|$.submit(selector, lambda = () => {})| Submit event handler for forms|
+|$.click(selector, func = (e) => {})| Click event handler|
+|$.dblclick(selector, func = (e) => {})| Double click event handler|
+|$.hover(selector, func = (e) => {})| Mouse over event handler|
+|$.change(selector, func = (e) => {})| Change event handler|
+|$.select(selector, func = (e) => {})| Select event handler|
+|$.input(selector, func = (e) => {})| Input change event handler|
+|$.submit(selector, func = (e) => {})| Submit event handler for forms|
 
 ### Iterator
 |Name|Description|
 |----|-----------|
-|$.each(selector, lambda = (elem) => {})| Iterates over each element with specific query selector|
+|$.each(selector, func = (elem) => {})| Iterates over each element with specific query selector|
+
+### UI
+|Name|Description|
+|----|-----------|
+|$.hide(selector)| Hides element(s) |
+|$.show(selector, display = 'block')| Shows element, default setting is display: block |
 
 ### AJAX
 **Information**: Ajax methods use the XMLHttpRequest class.
