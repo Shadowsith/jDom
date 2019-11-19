@@ -1,4 +1,4 @@
-class jDom {
+class qjDom {
     /* selector */
     static id(id) {
         return document.getElementById(id);
@@ -130,4 +130,4 @@ class jDom {
         return list.join('&');
     }
 }
-var $ = jDom;
+var $ = qjDom;
