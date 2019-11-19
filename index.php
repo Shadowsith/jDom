@@ -3,7 +3,7 @@
 
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="./jdom.min.js"></script>
+    <script src="./qjdom.min.js"></script>
     <script>
         $.ready((e) => {
             $.click('#btn', () => {
