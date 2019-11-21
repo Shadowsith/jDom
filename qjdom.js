@@ -122,7 +122,6 @@ class qjDom {
     }
 
     /* ui */
-    /*
     static hide(selector) {
         let list = $.sel(selector);
         if (selector[0] !== '#') {
@@ -133,7 +132,6 @@ class qjDom {
             list.style.display = 'none';
         }
     }
-    */
 
     static show(selector, display = 'block') {
         const list = $.sel(selector);
@@ -201,6 +199,44 @@ class qjDom {
                 op += op * 0.1;
             }
         }, ms);
+    }
+
+    static slideDown(selector, height = '50px', transition = 1) {
+        const list = this.sel(selector);
+        if (selector[0] !== '#') {
+            for (let i = 0; i < list.length; i++) {
+                list[i].style.overflow = 'hidden';
+                list[i].style.transition = `height ${transition}s ease-in-out`;
+                list[i].style.height = height;
+
+                setTimeout(function() {
+                    list[i].style.overflow = "auto";
+                }.bind(list[i]), 1000);
+            }
+        } else {
+            list.style.overflow = 'hidden';
+            list.style.transition = `height ${transition}s ease-in-out`;
+            list.style.height = height;
+
+            setTimeout(function() {
+                list.style.overflow = "auto";
+            }.bind(list), 1000);
+        }
+    }
+
+    static slideUp(selector, transition = 1) {
+        const list = this.sel(selector);
+        if (selector[0] !== '#') {
+            for (let i = 0; i < list.length; i++) {
+                list[i].style.overflow = "hidden";
+                list[i].style.transition = `height ${transition}s ease-in-out`;
+                list[i].style.height = "0";
+            }
+        } else {
+            list.style.overflow = "hidden";
+            list.style.transition = `height ${transition}s ease-in-out`;
+            list.style.height = "0";
+        }
     }
 
     static remove(selector) {
@@ -272,14 +308,3 @@ class qjDom {
     }
 }
 var $ = qjDom;
-
-qjDom.hide = function(selector) {
-    let list = this.sel(selector);
-    if (selector[0] !== '#') {
-        for (let i = 0; i < list.length; i++) {
-            list[i].style.display = 'none';
-        }
-    } else {
-        list.style.display = 'none';
-    }
-}

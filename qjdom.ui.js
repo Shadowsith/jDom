@@ -89,4 +89,42 @@ qjDom.remove = function(selector) {
         list.remove();
     }
 }
+
+qjDom.slideDown = function(selector, height = '50px', transition = 1) {
+    const list = this.sel(selector);
+    if (selector[0] !== '#') {
+        for (let i = 0; i < list.length; i++) {
+            list[i].style.overflow = 'hidden';
+            list[i].style.transition = `height ${transition}s ease-in-out`;
+            list[i].style.height = height;
+
+            setTimeout(function() {
+                list[i].style.overflow = "auto";
+            }.bind(list[i]), 1000);
+        }
+    } else {
+        list.style.overflow = 'hidden';
+        list.style.transition = `height ${transition}s ease-in-out`;
+        list.style.height = height;
+
+        setTimeout(function() {
+            list.style.overflow = "auto";
+        }.bind(list), 1000);
+    }
+}
+
+qjDom.slideUp = function(selector, transition = 1) {
+    const list = this.sel(selector);
+    if (selector[0] !== '#') {
+        for (let i = 0; i < list.length; i++) {
+            list[i].style.overflow = "hidden";
+            list[i].style.transition = `height ${transition}s ease-in-out`;
+            list[i].style.height = "0";
+        }
+    } else {
+        list.style.overflow = "hidden";
+        list.style.transition = `height ${transition}s ease-in-out`;
+        list.style.height = "0";
+    };
+}
 var $ = qjDom;
