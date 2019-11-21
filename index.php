@@ -3,7 +3,8 @@
 
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="./qjdom.comp.js"></script>
+    <script src="./qjdom.base.js"></script>
+    <script src="./qjdom.ui.js"></script>
     <script>
         $.ready(function(e) {
             $.each('input', function(elem) {
@@ -54,7 +55,7 @@
         <form id="formular">
             <div class="row">
                 <div class="col">
-                    <div class="form-group">
+                    <div class="form-group" id="fg1">
                         <label>First Name</label>
                         <input id="first" class="form-control">
                     </div>
